@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Master Suite" parallel="classes" thread-count="2">
+    <test name="All tests">
+        <classes>
+            <class name="pageTests.SignUpTest">
+                <methods>
+                    <exclude name="signUp_basicAccount_successfulSignUp"/>
+                    <exclude name="signUp_accountAlreadyExistMessage"/>
+                    <include name="signUp_subscriptionAgreementPageIsPresent"/>
+                </methods>
+            </class>
+            <class name="pageTests.LoginTest">
+                <methods>
+                    <exclude name="login_basicAccount_successfulLogin"/>
+                    <include name="login_basicAccWrongPassword_errorMessage"/>
+                    <include name="login_accountLocked_unlockInstructionsSentMessage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
