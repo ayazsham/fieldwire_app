@@ -81,11 +81,6 @@ public class SignUpPage extends BasePage {
         return driver.findElement(By.xpath("//fw-button[@data-e2e='create-account-complete']"));
     }
 
-    private WebElement getSubscriptionAgreementButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Subscription Agreement')]")));
-        return driver.findElement(By.xpath("//a[contains(text(),'Subscription Agreement')]"));
-    }
-
     public boolean isAccountAlreadyExistMessage() {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'An account with that email address already exists.')]")));
@@ -95,15 +90,10 @@ public class SignUpPage extends BasePage {
         return true;
     }
 
-    public boolean isSubscriptionAgreementPresent() throws MalformedURLException {
-        for (String winHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(winHandle);
-        }
-        URL aURL = new URL(driver.getCurrentUrl());
-        String subArgUrlPath = aURL.getPath();
-        String subscriptionAgreementPath = "/legal/en/subscription_agreement.pdf";
+    public boolean isSubscriptionAgreementButtonPresent() {
+        getCreateAccountLink().click();
         try {
-            Assert.assertEquals(subArgUrlPath, subscriptionAgreementPath);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Subscription Agreement')]")));
         } catch (TimeoutException err) {
             return false;
         }
@@ -138,11 +128,6 @@ public class SignUpPage extends BasePage {
         getPasswordField().sendKeys(password);
         getExplicitAgreementCheckbox().click();
         getCreateAccountButton().click();
-    }
-
-    public void clickOnSubscriptionAgreementAtSignUp() {
-        getCreateAccountLink().click();
-        getSubscriptionAgreementButton().click();
     }
 }
 

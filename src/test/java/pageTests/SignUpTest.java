@@ -27,10 +27,9 @@ public class SignUpTest extends BaseTest{
     }
 
     @Test
-    public void signUp_subscriptionAgreementPageIsPresent() throws MalformedURLException {
+    public void signUp_subscriptionAgreementButtonIsPresent() {
         SignUpPage signUpPage = new SignUpPage(driver);
-        signUpPage.clickOnSubscriptionAgreementAtSignUp();
-        Assert.assertTrue(signUpPage.isSubscriptionAgreementPresent());
+        Assert.assertTrue(signUpPage.isSubscriptionAgreementButtonPresent());
     }
 
 }
