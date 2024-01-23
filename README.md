@@ -25,7 +25,6 @@ Run all the tests with Maven run command $ mvn clean test. If you use clean , al
 
 
 
-
 ## References
 
 * Selenium - [http://www.seleniumhq.org/](http://www.seleniumhq.org/)
